@@ -58,102 +58,109 @@
             <div class="navbar-nav font-weight-bold mx-auto py-0">
             </div>
             <div class="nav_btn_container">
-              <a href="javascript:toggleVueAdmin();" class="btn btn-primary px-4">Connexion</a>
+              <a href="./connexion.html" class="btn btn-primary px-4">Connexion</a>
+              <a href="./enregistrement.html" class="btn btn-primary px-4">S'enregistrer</a>
             </div>
           </div>
         </nav>
       </div>
 
     <!-- Form Connexion -->
-    <section class="vh-100">
-        <div class="container-fluid h-custom">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-lg-6 col-xl-5">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                class="img-fluid" alt="Sample image">
-            </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form>
-                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                  <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                  </button>
-      
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                  </button>
-      
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-linkedin-in"></i>
-                  </button>
-                </div>
-      
-                <div class="divider d-flex align-items-center my-4">
-                  <p class="text-center fw-bold mx-3 mb-0">Or</p>
-                </div>
-      
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <input type="email" id="courrielUser" class="form-control form-control-lg"
-                    placeholder="Entrez votre adresse courriel" />
-                  <label class="form-label" for="courrielUser">Courriel</label>
-                </div>
-      
-                <!-- Password input -->
-                <div class="form-outline mb-3">
-                  <input type="password" id="passwordUser" class="form-control form-control-lg"
-                    placeholder="Entrez votre mot de passe" />
-                  <label class="form-label" for="passwordUser">Mot de passe</label>
-                </div>
-      
-                <div class="d-flex justify-content-between align-items-center">
-                  <!-- Checkbox -->
-                  <div class="form-check mb-0">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                    <label class="form-check-label" for="form2Example3">
-                      Se souvenir de moi
-                    </label>
+    <section class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+              <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Nouveau membre?</h3>
+                <form>
+                  <span id="errMssEnr" style="color: red; font-size: 20px; padding: 10px;"></span>
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="text" id="nomUser" class="form-control form-control-lg" />
+                        <label class="form-label" for="nomUser">Nom</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="text" id="prenomUser" class="form-control form-control-lg" />
+                        <label class="form-label" for="prenomUser">Prénom</label>
+                      </div>
+    
+                    </div>
                   </div>
-                  <a href="#!" class="text-body">Vous avez oublié votre mot de passe?</a>
-                </div>
-      
-                <div class="text-center text-lg-start mt-4 pt-2">
-                  <button type="button" class="btn btn-primary btn-lg"
-                    id="btnConnexion" style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="seConnecter()">Connexion</button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">Pas encore de compte? <a href="#!"
-                      class="link-danger">S'enregistre</a></p>
-                </div>
-      
-              </form>
+                 
+                  <div class="row">
+                    <div class="col-md-4 pb-2">
+                      
+                      <label class="form-label select-label">Année</label>
+                      <select class="select form-control-md" id="classeUser">
+                        <option value="Autre" disabled>Faites votre choix</option>
+                        <option value="Maternelle">Maternelle</option>
+                        <option value="1ère année">1ère année</option>
+                        <option value="2ème année">2ème année</option>
+                        <option value="3ème année">3ème année</option>
+                        <option value="4ème année">4ème année</option>
+                        <option value="5ème année">5ème année</option>
+                        <option value="6ème année">6ème année</option>
+                      </select>
+    
+                    </div>
+                    <div class="col-md-2 pb-1">
+                    </div>
+                    <div class="col-md-6 pb-2">
+                      
+                      <input type="text" id="groupeUser" class="form-control form-control-lg" />
+                      <label class="form-label" for="groupeUser">Groupe</label>
+    
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-12 mb-6 d-flex align-items-center">
+                      <div class="form-outline datepicker w-100">
+                        <input type="text" class="form-control form-control-lg" id="courrielUser" />
+                        <label for="birthdayDate" class="courrielUser">Courriel</label>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input type="email" id="passwordUser" class="form-control form-control-lg" />
+                        <label class="form-label" for="passwordUser">Mot de passe</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input type="tel" id="cpassUser" class="form-control form-control-lg" />
+                        <label class="form-label" for="cpassUser">Confirmation du mot de passe</label>
+                      </div>
+    
+                    </div>
+                  </div>
+    
+    
+                  <div class="mt-4 pt-2">
+                    <button type="button" class="btn btn-primary btn-lg"
+                    id="btnConnexion" style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="enregistrer()">Enregistrer</button>
+                  </div>
+    
+                </form>
+              </div>
             </div>
           </div>
         </div>
-        <div
-          class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-          <!-- Copyright -->
-          <div class="text-white mb-3 mb-md-0">
-          </div>
-          <!-- Copyright -->
-      
-          <!-- Right -->
-          <div>
-            <a href="#!" class="text-white me-4">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#!" class="text-white me-4">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#!" class="text-white me-4">
-              <i class="fab fa-google"></i>
-            </a>
-            <a href="#!" class="text-white">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-          <!-- Right -->
-        </div>
-      </section>
+      </div>
+    </section>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.2/axios.min.js"></script>
 </body>
