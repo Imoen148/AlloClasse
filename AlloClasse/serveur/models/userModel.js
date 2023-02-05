@@ -95,10 +95,6 @@ userSchema.pre(/^find/, function(next) { // /^find/ means any query with the wor
 
 // -------------  instance methods available everywhere, no need to export --------------
 userSchema.methods.correctPassword = async function(candidatePassword, userPassword) {
-
-    console.log(await bcrypt.hash(candidatePassword, 12));
-
-    
     return await bcrypt.compare(candidatePassword, userPassword)
 }
 

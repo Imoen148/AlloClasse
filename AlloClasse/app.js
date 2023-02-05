@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit'); // SECURITY
@@ -5,9 +6,11 @@ const helmet = require('helmet'); // SECURITY
 const mongoSanitize = require('express-mongo-sanitize'); // SECURITY
 const xss = require('xss-clean'); // SECURITY
 const hpp = require('hpp'); // SECURITY 
+// const cors = require('cors');
+
+
 const AppError = require('./serveur/utils/appError')
 const globalErrorHandler = require('./serveur/controllers/errorController')
-
 const usersRouter = require('./serveur/routes/userRoutes');
 const ecoleRouter = require('./serveur/routes/ecoleRoute');
 // const professeurRouter = require('./routes/professeurRoute');
@@ -15,9 +18,14 @@ const ecoleRouter = require('./serveur/routes/ecoleRoute');
 const publicationRouter = require('./serveur/routes/publicationRoute');
 const commentaireRouter = require('./serveur/routes/commentaireRoute');
 const messageRouter = require('./serveur/routes/messageRoute');
+const viewRouter = require('./serveur/routes/viewRoutes');
 
 const app = express();
+app.set('view engine', 'pug');
+console.log(path.join(__dirname, 'client/views'));
+app.set('views', path.join(__dirname, 'client/views'));
 
+app.use(express.static("AlloClasse/client"));
 
 // MIDLEWARES
 app.use(helmet()); // SECURITY BEST PRACTICES - SET SECURITY HTTP HEADERS
@@ -31,12 +39,15 @@ app.use('/api', limiter);
 app.use(mongoSanitize()); // SECURITY BEST PRACTICES - DATA SANITIZATION - NOSQL QUERY INJECTION
 app.use(xss()); // SECURITY BEST PRACTICES - DATA SANITIZATION - CROSS-SIDE SCRIPTING ATTACK (XSS)
 app.use(hpp()); // SECURITY BEST PRACTICES - HTTP PARAMETER SOLUTION
-
+// app.use(cors({
+//     origin:"*",
+// }))
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev')); // dev request infos
 app.use(express.json()); // Body parser, reading data from body into req.body
 
 
 // ROUTES
+app.use('/', viewRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/ecoles', ecoleRouter);
 // app.use('/api/v1/professeurs', professeurRouter);
