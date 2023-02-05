@@ -42,11 +42,12 @@ const createSendToken = (user, statusCode, res) => {
 
 exports.signup = catchAsync(async (req, res, next) => {
     const newUser = await User.create({
-        name: req.body.name,
-        email: req.body.email,
+        Nom: req.body.Nom,
+        Prenom: req.body.Prenom,
+        Courriel: req.body.Courriel,
+        Role: req.body.Role,
+        Groupe: req.body.Groupe,
         password: req.body.password,
-        role: req.body.role,
-        plan: req.body.plan,
         passwordConfirm: req.body.passwordConfirm,
         passwordChangedAt: req.body.passwordChangedAt
     });
@@ -56,18 +57,18 @@ exports.signup = catchAsync(async (req, res, next) => {
 
 
 exports.login = catchAsync(async (req,res,next) => {
-    const {email, password} = req.body; // même chose que :  const email = req.body.email
+    const {Courriel, password} = req.body; // même chose que :  const email = req.body.Courriel
   
     // 1) check if email exists and password
-    if (!email || !password) {
-        return next(new AppError('Please provide email and password!', 400))
+    if (!Courriel || !password) {
+        return next(new AppError('Veuillez fournir un courriel et un mot de passe!', 400))
     }
 
     // 2) Check if user exists && password is correct
-    const user = await User.findOne({email}).select('+password');
+    const user = await User.findOne({ Courriel }).select('+password');
     
     if (!user || !await user.correctPassword(password, user.password)) {
-        return next(new AppError('Incorrect email or password', 401));
+        return next(new AppError('Courriel ou password invalide!', 401));
     }
 
     // 3) If ok, sent token to client
@@ -87,7 +88,7 @@ exports.protect = catchAsync( async (req, res, next)=> {
 
     if (!token) {
         return next(
-            new AppError('You are not logged in! Please log in to get acces.', 401)
+            new AppError('Vous n\'êtes pas connecté! Connectez-vous pour avoir accès à votre application.', 401)
         );
     }
 
@@ -98,12 +99,12 @@ exports.protect = catchAsync( async (req, res, next)=> {
     const currentUser = await User.findById(decoded.id);
 
     if (!currentUser) {
-        return next(new AppError('The user belonging to the token no longer exists', 401))
+        return next(new AppError('L\'utilisateur appartenant à ce jeton n\'existe plus', 401))
     }
 
     // 4) Check if user changed password after the token was issued
     if (currentUser.changePasswordAfter(decoded.iat)){
-        return next(new AppError('User recently changed password! Please log in again', 401));
+        return next(new AppError('Cet utilisateur a récemment changé de mot de passe! Reconnectez-vous à noueau', 401));
     }
 
     // GRANT ACCES TO NOW PROTECTED ROUTES
@@ -115,7 +116,7 @@ exports.protect = catchAsync( async (req, res, next)=> {
 exports.restrictTo = (...roles) => {
     return (req, res, next) => {
         if (!roles.includes(req.user.role)) {
-            return next(new AppError('You do not have permission to perform this action', 403))
+            return next(new AppError('Vous n\'avez pas la permission de performer cette action', 403))
         }
 
         next();
@@ -124,9 +125,9 @@ exports.restrictTo = (...roles) => {
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
     // 1) Get user based on posted email
-    const user = await User.findOne({email: req.body.email})
+    const user = await User.findOne({Courriel: req.body.Courriel})
     if (!user){
-        return next(new AppError('There is no user with email adress', 404))
+        return next(new AppError('Il n\'y a pas d\'utilisateur associé à ce courriel', 404))
     }
 
     // 2) Generate random reset token
@@ -138,20 +139,20 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
         'host'
         )}/api/v1/users/resetPassword/${resetToken}`
 
-    const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to :
+    const message = `Oublié votre mot de passe? Soummetez une nouvelle requête \'PATCH\' avec avec votre nouveau mot de passe ainsi que la confirmation du mot de passe à :
     \n${resetURL}
-    \nIf you didn't forget your password, please ignore this email!`;
+    \nSi vous n'avez pas oublié votre mot de passe, ignoré ce courriel!`;
 
     try{
         await sendEmail({
-            email: user.email,
-            subject: 'Your password reset token (valid for 10 min)',
+            email: user.Courriel,
+            subject: 'Votre jeton de renouvellement (valide pour 10 minutes)',
             message
         });
 
         res.status(200).json({
             status: 'success',
-            message: 'Token sent to email!'
+            message: 'Jeton envoyé par courriel!'
         });
     } catch(err) {
         user.passwordResetToken = undefined;
@@ -159,7 +160,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
         await user.save({ validateBeforeSave: false})
 
         return next(
-            new AppError('There was an error sending the email. Try again!',
+            new AppError('Il y a eu une erreur lors de l\'envoi du jeton. Essayer à nouveau!',
             500)
         );
     };
@@ -179,7 +180,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
 
     // 2) If token has not expire, and there is a user, set the new password
-    if(!user) next(new AppError('Token is invalid or has expired', 400))
+    if(!user) next(new AppError('Le jeton est invalide ou expiré', 400))
 
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
@@ -200,7 +201,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
     // 2) Check if POSTed current password is correct
     if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {
-        return next(new AppError('Your current password is wrong.', 401));
+        return next(new AppError('Votre mot de passe est invalid.', 401));
     }
 
     // 3) If so, update password

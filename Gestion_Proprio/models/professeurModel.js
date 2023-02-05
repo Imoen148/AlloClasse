@@ -5,14 +5,12 @@ const professeurSchema = new mongoose.Schema({
     Nom:{
         type:String,
         required: [true, 'Un professeur doit avoir un nom'],
-        unique: true,
         trim:true,
         maxLenght:200
     },
     Prenom:{
         type:String,
         required: [true, 'Un professeur doit avoir un prénom'],
-        unique: true,
         trim:true,
         maxLenght:200
     },

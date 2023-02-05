@@ -2,47 +2,50 @@ const crypto = require('crypto') // built-in - no need import
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const { Console } = require('console');
 
 const userSchema = new mongoose.Schema({
-    name: {
+    Nom: {
         type:String,
-        required: [true, 'A user need a name!']
+        required: [true, 'Un utilisateur doit avoir un nom!']
     },
-    email: {
+    Prenom: {
+        type:String,
+        required: [true, 'Un utilisateur doit avoir un prenom!']
+    },
+    Courriel: {
         type: String,
-        required: [true, 'A user need an email'],
+        required: [true, 'Un utilisateur doit avoir un courriel!'],
         unique: true,
         lowercase: true,
-        validate: [validator.isEmail, 'Please provide a valid email']
+        validate: [validator.isEmail, 'Entrez une adresse courriel valide']
     },
-    photo:  {
+    Role: {
+        type:String,
+        enum: ['admin', 'professeur', 'eleve', 'directeur'],
+        default: 'eleve'
+    },
+    Groupe: {
+        type:String,
+    },
+    Photo:  {
         type: String
-    },
-    role: {
-        type:String,
-        enum: ['admin', 'user', 'gestionnaire', 'locataire', 'proprietaire'],
-        default: 'user'
-    },
-    plan:{
-        type:String,
-        enum: ['basic', 'popular', 'premium'],
-        default: 'basic'
     },
     password:{
         type: String,
-        required: [true,'Please provide a password'],
+        required: [true,'Entrer un mot de passe'],
         minlength: 8,
         select: false
     },
     passwordConfirm:{
         type: String,
-        required:[true, 'Please confirm your password'],
+        required:[true, 'Confirme votre mot de passe'],
         validate: {
             // ONLY WORKS ON CREATE AND SAVE!!!
             validator: function(el) {
                 return el === this.password;
             },
-            message: 'Confirmation password is not the same'
+            message: 'La confirmation de vos mots de passe n\'est pas identique'
         }
     },
     passwordResetToken:String,
@@ -55,6 +58,10 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:true,
         select: false
+    },
+    online: {
+        type:Boolean,
+        default:false
     }
 })
 
@@ -88,6 +95,10 @@ userSchema.pre(/^find/, function(next) { // /^find/ means any query with the wor
 
 // -------------  instance methods available everywhere, no need to export --------------
 userSchema.methods.correctPassword = async function(candidatePassword, userPassword) {
+
+    console.log(await bcrypt.hash(candidatePassword, 12));
+
+    
     return await bcrypt.compare(candidatePassword, userPassword)
 }
 
