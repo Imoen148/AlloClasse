@@ -1,6 +1,6 @@
 const express = require('express')
 const bonDeReparationController = require('../controllers/bonDeReparationsController')
-const immeubleController = require('../controllers/immeubleController')
+const immeubleController = require('../controllers/z-immeubleController')
 const authController = require('../controllers/authController');
 
 

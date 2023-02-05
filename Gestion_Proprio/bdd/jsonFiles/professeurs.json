@@ -4,16 +4,16 @@
         "Prenom":"Marc",
         "Courriel": "parent.marc@cssda.gouv.qc.ca",
         "Groupe": "003",
-        "Année": "Maternelle",
-        "Ecole": "63df1ee29567b18d0b224288"
+        "Annee": "Maternelle",
+        "Ecole": "63df451f9bc1b1d31a23b0b1"
     },
     {
         "Nom":"Dubreuil",
         "Prenom":"Maryse",
         "Courriel": "dubreuil.maryse@csssamares.gouv.qc.ca",
         "Groupe": "202",
-        "Année": "2ème année",
-        "Ecole": "63df1ee29567b18d0b224289"
+        "Annee": "2ème année",
+        "Ecole": "63df451f9bc1b1d31a23b0b2"
         
     },
     {
@@ -21,8 +21,8 @@
         "Prenom":"Aziza",
         "Courriel": "khoulia.aziza@lesmelezes.qc.ca",
         "Groupe": "405",
-        "Année": "4ème année",
-        "Ecole": "63df1ee29567b18d0b22428a"  
+        "Annee": "4ème année",
+        "Ecole": "63df451f9bc1b1d31a23b0b3"  
     }
 
 ]

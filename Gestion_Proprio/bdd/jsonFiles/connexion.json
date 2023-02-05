@@ -1,0 +1,11 @@
+[
+    {
+        "Reference":"63df20ae9567b18d0b22428c",
+        "User":"parent.marc@cssda.gouv.qc.ca",
+        "Password": "abc123",
+        "PassConfirm": "abc123",
+        "role": "Professeur",
+        "active": true,
+        "online":false
+    }
+]

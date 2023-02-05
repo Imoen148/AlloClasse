@@ -1,5 +1,5 @@
 const express = require('express')
-const immeubleController = require('../controllers/immeubleController')
+const immeubleController = require('../controllers/z-immeubleController')
 const fournisseurRouter = require('../routes/fournisseurRoutes')
 const bonDeReparationRouter = require('../routes/bonDeReparationRoute')
 const authController = require('../controllers/authController');

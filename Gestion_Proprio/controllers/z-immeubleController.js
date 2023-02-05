@@ -1,5 +1,5 @@
-const Immeuble = require('./../models/immeubleModel')
-const catchAsync = require('./../utils/catachAsync')
+const Immeuble = require('../models/immeubleModel')
+const catchAsync = require('../utils/catachAsync')
 const factory = require('./handlerFactory');
 
 
