@@ -14,12 +14,12 @@ const usersRouter = require('./routes/userRoutes');
 // const fournisseursRouter = require('./routes/fournisseurRoutes');
 // const bonDeReparationRouter = require('./routes/bonDeReparationRoute');
 // const locataireRouter = require('./routes/locataireRoute');
-const ecoleRouter = require('./routes/ecoleRoute');
+const ecoleRouter = require('./serveur/routes/ecoleRoute');
 // const professeurRouter = require('./routes/professeurRoute');
 // const eleveRouter = require('./routes/eleveRoute');
-const publicationRouter = require('./routes/publicationRoute');
-const commentaireRouter = require('./routes/commentaireRoute');
-const messageRouter = require('./routes/messageRoute');
+const publicationRouter = require('./serveur/routes/publicationRoute');
+const commentaireRouter = require('./serveur/routes/commentaireRoute');
+const messageRouter = require('./serveur/routes/messageRoute');
 
 const app = express();
 

@@ -1,0 +1,28 @@
+[
+    {
+        "Nom":"Parent",
+        "Prenom":"Marc",
+        "Courriel": "parent.marc@cssda.gouv.qc.ca",
+        "Groupe": "003",
+        "Annee": "Maternelle",
+        "Ecole": "63df451f9bc1b1d31a23b0b1"
+    },
+    {
+        "Nom":"Dubreuil",
+        "Prenom":"Maryse",
+        "Courriel": "dubreuil.maryse@csssamares.gouv.qc.ca",
+        "Groupe": "202",
+        "Annee": "2ème année",
+        "Ecole": "63df451f9bc1b1d31a23b0b2"
+        
+    },
+    {
+        "Nom":"Khoulia",
+        "Prenom":"Aziza",
+        "Courriel": "khoulia.aziza@lesmelezes.qc.ca",
+        "Groupe": "405",
+        "Annee": "4ème année",
+        "Ecole": "63df451f9bc1b1d31a23b0b3"  
+    }
+
+]
