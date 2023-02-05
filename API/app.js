@@ -1,4 +1,4 @@
-const path = require('path');
+const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit'); // SECURITY
@@ -18,13 +18,9 @@ const ecoleRouter = require('./serveur/routes/ecoleRoute');
 const publicationRouter = require('./serveur/routes/publicationRoute');
 const commentaireRouter = require('./serveur/routes/commentaireRoute');
 const messageRouter = require('./serveur/routes/messageRoute');
-const viewRouter = require('./serveur/routes/viewRoutes');
 
 const app = express();
-app.set('view engine', 'pug');
-console.log(path.join(__dirname, 'client/views'));
-app.set('views', path.join(__dirname, 'client/views'));
-
+app.use(cors());
 app.use(express.static("AlloClasse/client"));
 
 // MIDLEWARES
@@ -47,7 +43,7 @@ app.use(express.json()); // Body parser, reading data from body into req.body
 
 
 // ROUTES
-app.use('/', viewRouter);
+
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/ecoles', ecoleRouter);
 // app.use('/api/v1/professeurs', professeurRouter);

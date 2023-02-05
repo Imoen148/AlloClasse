@@ -70,12 +70,54 @@ exports.login = catchAsync(async (req,res,next) => {
     if (!user || !await user.correctPassword(password, user.password)) {
         return next(new AppError('Courriel ou password invalide!', 401));
     }
+    
+    // 3) Mettre l'utilisateur online
+    await User.findByIdAndUpdate(user.id, {online: true});
 
-    // 3) If ok, sent token to client
+    // 4) If ok, sent token to client
     createSendToken(user, 200, res);
+
 });
 
 exports.protect = catchAsync( async (req, res, next)=> {
+    // 1) Get the token and check if it exists
+    let token;
+
+    if (
+        req.headers.authorization && 
+        req.headers.authorization.startsWith('Bearer')
+    ) {
+        token = req.headers.authorization.split(' ')[1];
+    }
+
+    if (!token) {
+        return next(
+            new AppError('Vous n\'êtes pas connecté! Connectez-vous pour avoir accès à votre application.', 401)
+        );
+    }
+
+    // 2) validate the token
+    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+    // 3) Check if user still exists
+    const currentUser = await User.findById(decoded.id);
+
+    if (!currentUser) {
+        return next(new AppError('L\'utilisateur appartenant à ce jeton n\'existe plus', 401))
+    }
+
+    // 4) Check if user changed password after the token was issued
+    if (currentUser.changePasswordAfter(decoded.iat)){
+        return next(new AppError('Cet utilisateur a récemment changé de mot de passe! Reconnectez-vous à noueau', 401));
+    }
+
+    // GRANT ACCES TO NOW PROTECTED ROUTES
+    req.user = currentUser;
+    next();
+});
+
+
+exports.isLoggedIn = catchAsync( async (req, res, next)=> {
     // 1) Get the token and check if it exists
     let token;
 
