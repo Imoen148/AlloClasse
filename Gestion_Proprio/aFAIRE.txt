@@ -1,0 +1,10 @@
+creer le json user
+creer le import-dev-data-user
+modifier le numero de user dans les immeubles et separer en fonction de user
+modifier routes pour afficher seulement les immeubles du user actif
+creer route/model/controller pour locataire
+creer json locataire
+creer import-dev-data-locataire
+lier locataire aux portes parent referencing
+populate les locataires dans le model portes
+documenter postman

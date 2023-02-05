@@ -1,0 +1,119 @@
+[
+    {
+        "Immeuble": "63c055454fd426e37dee435e", 
+        "NumApp":3725,
+        "Type":"4 1/2",
+        "Revenu":850,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee435e", 
+        "NumApp":3727,
+        "Type":"5 1/2",
+        "Revenu":950,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee435e", 
+        "NumApp":3729,
+        "Type":"6 1/2",
+        "Revenu":1050,
+        "Vacance":true
+    },
+    
+    {
+        "Immeuble": "63c055454fd426e37dee4362", 
+        "NumApp":121,
+        "Type":"4 1/2",
+        "Revenu":900,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee4362", 
+        "NumApp":123,
+        "Type":"4 1/2",
+        "Revenu":900,
+        "Vacance":false
+    },
+    
+    {
+        "Immeuble": "63c055454fd426e37dee4365", 
+        "NumApp":38072,
+        "Type":"5 1/2",
+        "Revenu":1200,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee4365", 
+        "NumApp":38074,
+        "Type":"5 1/2",
+        "Revenu":1200,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee4365", 
+        "NumApp":38076,
+        "Type":"6 1/2",
+        "Revenu":1600,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee4365", 
+        "NumApp":38078,
+        "Type":"6 1/2",
+        "Revenu":1600,
+        "Vacance":false
+    },
+
+    {
+        "Immeuble": "63c055454fd426e37dee436a", 
+        "NumApp":6981,
+        "Type":"3 1/2",
+        "Revenu":765,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee436a", 
+        "NumApp":6983,
+        "Type":"3 1/2",
+        "Revenu":765,
+        "Vacance":false
+    },
+    
+    {
+        "Immeuble": "63c055454fd426e37dee436d", 
+        "NumApp":38,
+        "Type":"3 1/2",
+        "Revenu":750,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee436d", 
+        "NumApp":40,
+        "Type":"7 1/2",
+        "Revenu":1250,
+        "Vacance":false
+    },
+    
+    {
+        "Immeuble": "63c055454fd426e37dee4370", 
+        "NumApp":3725,
+        "Type":"4 1/2",
+        "Revenu":850,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee4370", 
+        "NumApp":3727,
+        "Type":"5 1/2",
+        "Revenu":950,
+        "Vacance":false
+    },
+    {
+        "Immeuble": "63c055454fd426e37dee4370", 
+        "NumApp":3729,
+        "Type":"6 1/2",
+        "Revenu":1050,
+        "Vacance":false
+    }
+]
