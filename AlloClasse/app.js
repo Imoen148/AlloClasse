@@ -5,15 +5,10 @@ const helmet = require('helmet'); // SECURITY
 const mongoSanitize = require('express-mongo-sanitize'); // SECURITY
 const xss = require('xss-clean'); // SECURITY
 const hpp = require('hpp'); // SECURITY 
-const AppError = require('./utils/appError')
-const globalErrorHandler = require('./controllers/errorController')
+const AppError = require('./serveur/utils/appError')
+const globalErrorHandler = require('./serveur/controllers/errorController')
 
-// const immeublesRouter = require('./routes/immeubleRoutes');
-const usersRouter = require('./routes/userRoutes');
-// const portesRouter = require('./routes/porteRoutes');
-// const fournisseursRouter = require('./routes/fournisseurRoutes');
-// const bonDeReparationRouter = require('./routes/bonDeReparationRoute');
-// const locataireRouter = require('./routes/locataireRoute');
+const usersRouter = require('./serveur/routes/userRoutes');
 const ecoleRouter = require('./serveur/routes/ecoleRoute');
 // const professeurRouter = require('./routes/professeurRoute');
 // const eleveRouter = require('./routes/eleveRoute');
@@ -42,12 +37,7 @@ app.use(express.json()); // Body parser, reading data from body into req.body
 
 
 // ROUTES
-// app.use('/api/v1/immeubles', immeublesRouter);
 app.use('/api/v1/users', usersRouter);
-// app.use('/api/v1/portes', portesRouter);
-// app.use('/api/v1/fournisseurs', fournisseursRouter);
-// app.use('/api/v1/bonDeReparations', bonDeReparationRouter);
-// app.use('/api/v1/locataires', locataireRouter);
 app.use('/api/v1/ecoles', ecoleRouter);
 // app.use('/api/v1/professeurs', professeurRouter);
 // app.use('/api/v1/eleves', eleveRouter);
