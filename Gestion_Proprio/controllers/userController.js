@@ -1,6 +1,6 @@
 const AppError = require('../utils/appError');
-const User = require('../models/userModel');
-const catchAsync = require('../utils/catachAsync');
+const User = require('./../models/userModel');
+const catchAsync = require('./../utils/catachAsync');
 const factory = require('./handlerFactory');
 
 

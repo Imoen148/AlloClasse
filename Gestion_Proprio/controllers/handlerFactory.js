@@ -1,6 +1,6 @@
-const catchAsync = require('../utils/catachAsync');
-const AppError = require('../utils/appError');
-const APIFeatures = require('../utils/ApiFeatures');
+const catchAsync = require('./../utils/catachAsync');
+const AppError = require('./../utils/appError');
+const APIFeatures = require('./../utils/ApiFeatures');
 const { modelName } = require('../models/userModel');
 
 exports.deleteOne = Model => catchAsync(async (req, res, next) => {
